@@ -1,0 +1,20 @@
+@charset "utf-8";
+// ===========================
+//
+// get vw size
+//
+// ===========================
+
+@function get_vw($size, $viewport: 640) {
+  $rate: 100 / $viewport;
+  @return $rate * $size * 1vw;
+}
+
+@mixin fz_vw($font_size: 12, $viewport: 640) {
+  font-size: $font_size * 1px;
+  font-size: get_vw($font_size, $viewport);
+}
+
+// p{
+//   @include fz_vw(13);
+// }

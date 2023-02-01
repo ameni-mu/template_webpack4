@@ -1,0 +1,454 @@
+@charset "UTF-8";
+////////////////////////////////////////////////////////
+// header
+////////////////////////////////////////////////////////
+//main header
+.main-header {
+  width: 100%;
+  text-align: center;
+  height: 100px;
+  box-sizing: border-box;
+  font-size: 1.6rem;
+  left: 0;
+  top: 0;
+  margin: 0 auto;
+  z-index: 2000;
+  @include max-screen($sp) {
+    height: 67px;
+    overflow-x: hidden;
+  }
+  a {
+    color: #000;
+  }
+  &.active {
+    @include max-screen($sp) {
+      height: 100%;
+    }
+    .ico {
+      span {
+        &:nth-child(1) {
+          transform: rotate(-45deg) translate(-4px, -1px);
+        }
+        &:nth-child(2) {
+          opacity: 0;
+        }
+        &:nth-child(3) {
+          transform: rotate(45deg) translate(-9px, -16px);
+        }
+      }
+    }
+    > .container {
+      @include max-screen($sp) {
+        opacity: 1;
+        transition: opacity 1s ease-in-out;
+        padding: 0;
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        background-color: #fff;
+        left: 0;
+        top: 0;
+        z-index: 5000;
+        transform: translateX(0);
+        position: fixed;
+      }
+      > .wrap {
+        > .inner {
+          @include max-screen($sp) {
+            opacity: 1;
+          }
+        }
+      }
+    }
+    > .humburger {
+      position: fixed;
+    }
+  }
+  > .humburger {
+    display: none;
+    @include max-screen($sp) {
+      display: block;
+      position: absolute;
+      right: 15px;
+      top: 14px;
+      width: 40px;
+      height: 40px;
+      z-index: 9999;
+    }
+    #js-hamburger {
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      z-index: 10001;
+      border: none;
+      overflow: hidden;
+      background: none;
+      position: absolute;
+      left: 0;
+      top: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .ico {
+      display: block;
+      width: 24px;
+      height: 22px;
+      position: absolute;
+      @include texthidden();
+      top: 9px;
+      left: 8px;
+      span {
+        width: 24px;
+        height: 2px;
+        background-color: #000;
+        position: absolute;
+        transition: all 0.1s linear;
+        &:nth-child(1) {
+          left: 0;
+          top: 0;
+          transform-origin: right top 0;
+        }
+        &:nth-child(2) {
+          left: 0;
+          top: 10px;
+        }
+        &:nth-child(3) {
+          left: 0;
+          bottom: 0;
+          transform-origin: left top 0;
+        }
+      }
+    }
+  }
+  > .container {
+    width: 100%;
+    max-width: $content-m;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 0 0 20px;
+    box-sizing: border-box;
+    @include max-screen($content-m) {
+      width: 100%;
+    }
+    @include max-screen($sp) {
+      transform: translateX(110vh);
+    }
+    > .wrap {
+      @include max-screen($sp) {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
+      > .inner {
+        display: flex;
+        justify-content: space-between;
+        @include max-screen($sp) {
+          opacity: 0;
+          width: 100%;
+          box-sizing: border-box;
+          min-height: 100%;
+          padding: 46px 25px 0 33px;
+          display: block;
+          position: relative;
+          z-index: 9999;
+          transition: opacity 0.4s ease-in-out;
+        }
+      }
+    }
+  }
+  .site-ttl {
+    width: 173px;
+    height: 48px;
+    padding-top: 25px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-500px);
+    @include max-screen($content-m) {
+      left: 20px;
+      transform: translateX(0);
+    }
+    @include max-screen($sp) {
+      height: 31px;
+      padding: 18px 0 0 0;
+      width: 297px;
+    }
+    @include max-screen(350px) {
+      width: 220px;
+      left: 10px;
+    }
+    > a {
+      display: block;
+      width: 173px;
+      height: 48px;
+      background-image: url("../img/common/logo.svg");
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-size: 172px auto;
+      @include texthidden();
+      &:hover {
+        opacity: 1;
+      }
+      @include max-screen($sp) {
+        background-image: url("../img/common/logo_second.svg");
+        background-size: 266px auto;
+        width: 267px;
+        height: 31px;
+      }
+      @include max-screen(350px) {
+        width: 220px;
+        height: 26px;
+        background-size: 220px auto;
+      }
+    }
+  }
+  .nav {
+    width: 100%;
+    height: 100px;
+    text-align: right;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-end;
+    font-family: "Teko", Helvetica, Arial, "ヒラギノ角ゴ ProN W3",
+      "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+    font-weight: 400;
+    @include max-screen($sp) {
+      display: block;
+      padding: 0;
+      text-align: left;
+      height: auto;
+      margin-bottom: 25px;
+    }
+
+    > .lists {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: auto;
+      transform: translateY(3px);
+      @include min-screen($sp) {
+        padding-right: 4px;
+      }
+      @include max-screen($content-m) {
+        margin-right: 15px;
+      }
+      @include max-screen($sp) {
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        margin-right: 0;
+      }
+      a {
+        &:hover {
+          @include max-screen($sp) {
+            text-decoration: none;
+          }
+        }
+      }
+      > .list {
+        display: inline-block;
+        @include max-screen($sp) {
+          width: 50%;
+          margin-bottom: 13px;
+        }
+        > .ttl {
+          font-size: 1.8rem;
+          line-height: 2.7rem;
+          display: inline-block;
+          text-transform: uppercase;
+          @include max-screen($sp) {
+            width: 100%;
+            font-size: 2.2rem;
+            line-height: 3.3rem;
+            font-weight: 300;
+          }
+          a {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            position: relative;
+            transition: color 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 15px 15px 15px 14px;
+            @include max-screen($sp) {
+              flex-wrap: wrap;
+              justify-content: inherit;
+              align-items: inherit;
+              padding: 15px 0 0 0;
+            }
+            &:hover {
+              color: #00ff6c;
+              text-decoration: none;
+              @include max-screen($sp) {
+                color: #101010;
+                text-decoration: none;
+              }
+            }
+            .ja {
+              display: none;
+              @include max-screen($sp) {
+                display: block;
+                font-size: 11px;
+                line-height: 1.6rem;
+                display: block;
+                width: 100%;
+              }
+            }
+          }
+        }
+        &.services {
+          @include max-screen($sp) {
+            margin-bottom: 6px;
+            width: 100%;
+          }
+        }
+        &.policy {
+          display: none;
+          @include max-screen($sp) {
+            display: block;
+            font-size: 1.1rem;
+            line-height: 1.6rem;
+            width: 100%;
+            margin-top: 16px;
+          }
+        }
+        &.company {
+          display: none;
+          @include max-screen($sp) {
+            display: block;
+          }
+        }
+        &.recruit {
+          display: none;
+          @include max-screen($sp) {
+            display: block;
+          }
+        }
+      }
+      .sub-list {
+        display: none;
+        @include max-screen($sp) {
+          font-size: 1.1rem;
+          line-height: 1.6rem;
+          display: block;
+        }
+        > li {
+          display: inline-block;
+          padding-right: 10px;
+          position: relative;
+          margin: 0 3px 5px 0;
+          &:after {
+            content: "/";
+            position: absolute;
+            right: 0;
+          }
+          &:last-child {
+            padding-right: 0;
+            &:after {
+              display: none;
+            }
+          }
+        }
+        a {
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+  .info {
+    display: none;
+    @include max-screen($sp) {
+      display: flex;
+      text-align: right;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      padding-right: 13px;
+    }
+    > .ttl {
+      width: 100%;
+      height: 45px;
+      @include texthidden();
+      margin-bottom: 25px;
+      letter-spacing: 0px;
+      position: relative;
+      a {
+        position: absolute;
+        width: 160px;
+        height: 100%;
+        background-image: url("../img/common/logo.svg");
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-size: 160px auto;
+        display: block;
+        right: 0;
+      }
+    }
+    > .txt {
+      font-size: 1.2rem;
+      line-height: 2.4rem;
+      width: 100%;
+    }
+    > .share {
+      @include max-screen($sp) {
+        display: flex;
+        justify-content: flex-end;
+        margin: 28px 0 23px 30px;
+      }
+      > li {
+        display: inline-block;
+        font-size: 1.3rem;
+        line-height: 1.8rem;
+        padding: 0 11px 0 11px;
+        position: relative;
+        &:last-child {
+          padding: 0 0 0 11px;
+          &:after {
+            display: none;
+          }
+        }
+        &:after {
+          content: "/";
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+        a {
+          display: block;
+          width: 100%;
+          height: 100%;
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+  .close {
+    display: none;
+    @include max-screen($sp) {
+      display: block;
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      right: 17px;
+      top: 14px;
+    }
+    a {
+      @include max-screen($sp) {
+        display: block;
+        width: 100%;
+        height: 100%;
+        @include texthidden();
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}

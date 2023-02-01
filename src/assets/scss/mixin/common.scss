@@ -1,0 +1,13 @@
+@charset "utf-8";
+// ===========================
+//
+// common
+//
+// ===========================
+// ===========================
+
+@mixin texthidden() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-indent: 200%;
+}

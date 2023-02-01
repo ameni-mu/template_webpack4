@@ -1,0 +1,129 @@
+@charset "UTF-8";
+////////////////////////////////////////////////////////
+// btn
+////////////////////////////////////////////////////////
+.btn-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  /*---------------
+  * VIEW ALL
+  ----------------*/
+  > .more {
+    display: inline-block;
+    padding: 18px 103px 20px 10px;
+    position: relative;
+    font-family: "Source Sans Pro", Helvetica, Arial, "ヒラギノ角ゴ ProN W3",
+      "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-style: italic;
+    color: #fff;
+    transition: color 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    letter-spacing: 0px;
+    transform: translateX(7px);
+    @include max-screen($sp) {
+      padding-left: 9px;
+    }
+    &:before {
+      width: 50px;
+      height: 1px;
+      background-color: #fff;
+      position: absolute;
+      content: "";
+      left: 97px;
+      top: 50%;
+      transform: translateY(-2px);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    &:after {
+      width: 10px;
+      height: 10px;
+      border-right: 1px solid #fff;
+      border-top: 1px solid #fff;
+      content: "";
+      position: absolute;
+      left: 136px;
+      top: 50%;
+      transform: rotate(45deg) translateY(-10px);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    &:hover {
+      color: #00ff6c;
+      text-decoration: none;
+      opacity: 1;
+      &:before {
+        background-color: #00ff6c;
+        transform: translate(11px, -2px);
+      }
+      &:after {
+        border-right: 1px solid #00ff6c;
+        border-top: 1px solid #00ff6c;
+        left: 146px;
+      }
+    }
+
+    //文字色　黒
+    &.-second {
+      color: #000;
+      &:before {
+        background-color: #000;
+      }
+      &:after {
+        border-color: #000;
+      }
+      &:hover {
+        color: #00ff6c;
+        text-decoration: none;
+        opacity: 1;
+        &:before {
+          background-color: #00ff6c;
+          transform: translate(11px, -2px);
+        }
+        &:after {
+          border-right: 1px solid #00ff6c;
+          border-top: 1px solid #00ff6c;
+          left: 146px;
+        }
+      }
+    }
+  }
+}
+
+.arrow {
+  display: inline-block;
+  height: 23px;
+  position: relative;
+  color: #101010;
+  transition: opacity 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  width: 61px;
+  &:before {
+    width: 50px;
+    height: 1px;
+    background-color: #101010;
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 50%;
+    transform: translateY(-2px);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  &:after {
+    width: 10px;
+    height: 10px;
+    border-right: 1px solid #101010;
+    border-top: 1px solid #101010;
+    content: "";
+    position: absolute;
+    left: 39px;
+    top: 50%;
+    transform: rotate(45deg) translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  &:hover {
+    opacity: 0.7;
+  }
+}

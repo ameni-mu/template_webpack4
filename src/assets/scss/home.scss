@@ -1,0 +1,1316 @@
+@charset "UTF-8";
+@import "./common/*";
+@import "./mixin/*";
+@import "./component/**/*";
+@import "~swiper/swiper-bundle.css";
+
+////////////////////////////////////////////////////////
+// home page scss
+////////////////////////////////////////////////////////
+html {
+  transition: background 0.5s ease;
+}
+.is-modal {
+  overflow-y: hidden;
+}
+.ie {
+}
+.ie-alert {
+  &:before {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #000;
+    height: 60px;
+    color: #fff;
+    content: "こちらのサイトはInternet Explorerには対応しておりません。";
+    z-index: 9999;
+    padding: 0 10px;
+    text-align: center;
+    line-height: 60px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+}
+@media all and (-ms-high-contrast: none) {
+  body {
+    &:before {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #000;
+      height: 60px;
+      color: #fff;
+      content: "こちらのサイトはInternet Explorerには対応しておりません。";
+      z-index: 9999;
+      padding: 0 10px;
+      text-align: center;
+      line-height: 60px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+  }
+}
+
+/*---------------
+* common
+----------------*/
+.section-ttl {
+  font-size: 3rem;
+  line-height: 4.6rem;
+  font-family: "Teko", Helvetica, Arial, "ヒラギノ角ゴ ProN W3",
+    "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0px;
+  @include max-screen($sp) {
+    font-size: 3.6rem;
+    line-height: 5.5rem;
+  }
+}
+/*---------------
+* mv
+----------------*/
+.mv-section {
+  width: 100%;
+  font-family: "Teko", Helvetica, Arial, "ヒラギノ角ゴ ProN W3",
+    "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+  font-weight: 400;
+  font-size: 250px;
+  line-height: 198px;
+  position: relative;
+  @include min-screen($sp) {
+    @include fz_vw(250, 1366);
+    line-height: get_vw(198px, 1366px);
+  }
+  @include max-screen($sp) {
+    @include fz_vw(122, 375);
+    line-height: get_vw(76px, 375px);
+  }
+  &.-large {
+    display: block;
+    position: static;
+    opacity: 1;
+    transform: translateX(0);
+    @include max-screen($sp) {
+      opacity: 0;
+      transform: translateX(110vh);
+      position: fixed;
+    }
+  }
+  &.-small {
+    opacity: 0;
+    transform: translateX(110vh);
+    position: fixed;
+    @include max-screen($sp) {
+      display: block;
+      margin-top: 21px;
+      position: static;
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  .wrap {
+    opacity: 0;
+    width: 100%;
+  }
+  .ol {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    transition: opacity 4s cubic-bezier(0.37, 0.06, 0.43, 0.83);
+    .line {
+      span {
+        -webkit-text-fill-color: #000;
+      }
+    }
+  }
+  .line {
+    height: 156px;
+    text-transform: uppercase;
+    transform: translate(0, -3px);
+    overflow: hidden;
+    @include min-screen($sp) {
+      height: get_vw(156px, 1366px);
+      transform: translate(0, get_vw(-3px, 1366px));
+    }
+    @include max-screen($sp) {
+      height: get_vw(75px, 375px);
+    }
+    &:first-child {
+      transform: translate(0, -2px);
+      @include min-screen($sp) {
+        height: get_vw(159px, 1366px);
+        transform: translate(0, get_vw(-2px, 1366px));
+      }
+      @include max-screen($sp) {
+        transform: translate(0, 0);
+      }
+      span {
+        transition: transform 1.4s 0s cubic-bezier(0.37, 0.06, 0.43, 0.83);
+      }
+    }
+    &:nth-child(2) {
+      transform: translateY(get_vw(-4px, 1366px));
+      @include max-screen($sp) {
+        transform: translateY(0);
+      }
+      span {
+        transition: transform 1.4s 0.1s cubic-bezier(0.37, 0.06, 0.43, 0.83);
+        @include min-screen($sp) {
+          letter-spacing: get_vw(1px, 1366px);
+        }
+      }
+    }
+    &:nth-child(3) {
+      transform: translateY(get_vw(-7px, 1366px));
+      @include max-screen($sp) {
+        transform: translateY(0);
+      }
+      span {
+        transition: transform 1.4s 0.2s cubic-bezier(0.37, 0.06, 0.43, 0.83);
+      }
+    }
+    &:nth-child(4) {
+      transform: translateY(get_vw(-8px, 1366px));
+      @include max-screen($sp) {
+        transform: translateY(0);
+      }
+      span {
+        transition: transform 1.4s 0.3s cubic-bezier(0.37, 0.06, 0.43, 0.83);
+      }
+    }
+    &:nth-child(5) {
+      transform: translateY(get_vw(-12px, 1366px));
+      @include max-screen($sp) {
+        transform: translateY(0);
+      }
+      span {
+        transition: transform 1.4s 0.4s cubic-bezier(0.37, 0.06, 0.43, 0.83);
+        letter-spacing: get_vw(-4px, 375px);
+      }
+    }
+    span {
+      height: 156px;
+      display: block;
+      white-space: nowrap;
+      letter-spacing: 2px;
+      text-indent: -13px;
+      transform: translateY(158px);
+      background: linear-gradient(
+        90deg,
+        rgba(193, 254, 159, 1) 0%,
+        rgba(149, 225, 203, 1) 13%,
+        rgba(33, 51, 50, 1) 25%,
+        rgba(149, 225, 203, 1) 37%,
+        rgba(193, 254, 159, 1) 50%,
+        rgba(149, 225, 203, 1) 63%,
+        rgba(33, 51, 50, 1) 75%,
+        rgba(149, 225, 203, 1) 88%,
+        rgba(193, 254, 159, 1) 100%
+      );
+      background-size: 400%;
+      background-position: -200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      @include min-screen($sp) {
+        height: get_vw(163px, 1366px);
+        letter-spacing: get_vw(2px, 1366px);
+        text-indent: get_vw(-13px, 1366px);
+        transform: translateY(get_vw(158px, 1366px));
+        line-height: get_vw(197px, 1366px);
+      }
+      @include max-screen($sp) {
+        height: get_vw(75px, 375px);
+        text-indent: 0;
+        transform: translateY(get_vw(75px, 375px));
+        text-indent: get_vw(-6px, 375px);
+        letter-spacing: get_vw(-3px, 375px);
+        line-height: get_vw(94px, 375px);
+      }
+    }
+  }
+  &.anim {
+    .line {
+      span {
+        transform: translateY(-2px);
+        @include min-screen($sp) {
+          transform: translateY(get_vw(-2px, 1366px));
+        }
+        @include max-screen($sp) {
+          transform: translateY(0);
+        }
+      }
+      &:nth-child(1) {
+        span {
+          @include min-screen($sp) {
+            transform: translateY(0);
+          }
+        }
+      }
+      &:nth-child(2) {
+        span {
+          @include min-screen($sp) {
+            transform: translateY(get_vw(-4px, 1366px));
+          }
+          @include max-screen($sp) {
+            transform: translateY(0);
+          }
+        }
+      }
+      &:nth-child(3) {
+        span {
+          @include min-screen($sp) {
+            transform: translateY(get_vw(-2px, 1366px));
+          }
+          @include max-screen($sp) {
+            transform: translateY(0);
+          }
+        }
+      }
+      &:nth-child(4) {
+        span {
+          @include min-screen($sp) {
+            transform: translateY(get_vw(-4px, 1366px));
+          }
+          @include max-screen($sp) {
+            transform: translateY(0);
+          }
+        }
+      }
+    }
+  }
+  &.grad {
+    .wrap {
+      opacity: 1;
+      z-index: 2;
+    }
+    .ol {
+      opacity: 0;
+      z-index: 1;
+    }
+    .line {
+      span {
+        transition: none;
+        animation: textAnime 30s 0s infinite linear;
+      }
+    }
+  }
+  // &.grad-anim {
+  //   > .line {
+  //     span {
+  //       transition: none;
+  //       background-position: -200% 0%;
+  //       //animation: textAnime 30s 0s infinite linear;
+  //     }
+  //   }
+  // }
+}
+// @keyframes fadeIngrad {
+//   0% {
+//     -webkit-text-fill-color: #000;
+//   }
+//   100% {
+//     -webkit-text-fill-color: transparent;
+//   }
+// }
+@keyframes textAnime {
+  0% {
+    background-position: -200% 0%;
+  }
+  100% {
+    background-position: -400% 0%;
+  }
+}
+
+/*---------------
+* work
+----------------*/
+.work-section {
+  padding: 89px 0 97px 0;
+  transform: translateY(-12px);
+  @include max-screen($content-m) {
+    padding: 89px 40px 70px 40px;
+    box-sizing: border-box;
+  }
+  @include max-screen($sp) {
+    padding: 48px 37px 60px 37px;
+    transform: translateY(get_vw(-8px, 375px));
+  }
+  > .container {
+    width: 1000px;
+    margin: 0 auto;
+    @include max-screen($content-m) {
+      width: 100%;
+    }
+  }
+  .section-ttl {
+    color: #000;
+    margin-bottom: 37px;
+  }
+  .article {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    padding-left: 108px;
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 90px;
+    @include max-screen($content-m) {
+      margin-bottom: 70px;
+    }
+    @include max-screen($sp) {
+      display: block;
+      padding-left: 0;
+      margin-bottom: 76px;
+    }
+    .img {
+      width: 890px;
+      overflow: hidden;
+      @include max-screen($sp) {
+        width: 100%;
+      }
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+    }
+    .link {
+      position: absolute;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      @include texthidden();
+    }
+    > .info {
+      position: absolute;
+      bottom: 40px;
+      left: 0;
+      background-color: rgba($color: #000000, $alpha: 0.9);
+      color: #fff;
+      width: 711px;
+      box-sizing: border-box;
+      padding: 18px 15px 18px 0;
+      min-height: 163px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+      @include max-screen($sp) {
+        position: static;
+        width: 100%;
+        padding: 23px 0 0 0;
+      }
+      &.visible {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      > .ttl {
+        font-size: 5rem;
+        line-height: 7.6rem;
+        font-family: "Teko", Helvetica, Arial, "ヒラギノ角ゴ ProN W3",
+          "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+        font-weight: 300;
+        letter-spacing: 0px;
+        @include max-screen($sp) {
+          font-size: 4.6rem;
+          line-height: 5.4rem;
+        }
+      }
+      > .client {
+        font-size: 1.5rem;
+        line-height: 2.1rem;
+        margin-bottom: 10px;
+        @include max-screen($sp) {
+          padding-top: 8px;
+        }
+        span {
+          display: inline-block;
+          margin-right: 6px;
+          &:first-child {
+            font-size: 1.8rem;
+            line-height: 2.5rem;
+            font-family: "Source Sans Pro", Helvetica, Arial,
+              "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ",
+              Meiryo, sans-serif;
+            font-weight: 400;
+            letter-spacing: 0px;
+          }
+          &:nth-child(2) {
+            transform: translateY(2px);
+          }
+        }
+      }
+      > .category {
+        font-size: 1.4rem;
+        line-height: 2rem;
+        opacity: 0.7;
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        text-transform: uppercase;
+        font-family: "Source Sans Pro", Helvetica, Arial, "ヒラギノ角ゴ ProN W3",
+          "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+        font-weight: 400;
+        letter-spacing: 0px;
+        position: relative;
+        z-index: 10;
+        @include max-screen($sp) {
+          padding-top: 4px;
+        }
+        li {
+          margin-right: 20px;
+          @include max-screen($sp) {
+            margin-bottom: 4px;
+          }
+        }
+        a {
+          color: #fff;
+          transition: opacity 0.2s linear;
+          &:hover {
+            color: #fff;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+  .btn-wrap {
+    transform: translateY(-20px);
+  }
+}
+
+/*---------------
+* services
+----------------*/
+.services-section {
+  width: 100%;
+  padding: 149px 0 98px 0;
+  background-color: #fff;
+  @include max-screen($content-m) {
+    padding: 80px 0 68px 0;
+  }
+  @include max-screen($sp) {
+    padding: 70px 0 49px 30px;
+    box-sizing: border-box;
+  }
+  > .container {
+    width: 100%;
+  }
+  .section-ttl {
+    text-align: center;
+    margin-bottom: 45px;
+    @include max-screen($sp) {
+      text-align: left;
+      margin-bottom: 0;
+    }
+  }
+  .lists {
+    width: 100%;
+    margin-bottom: 43px;
+    @include max-screen($sp) {
+      transform: translateY(-8px);
+      margin-bottom: 26px;
+    }
+  }
+  .list {
+    width: 100%;
+    display: block;
+    height: 119px;
+    overflow: hidden;
+    position: relative;
+    @include min-screen($sp) {
+      height: get_vw(119px, 1366px);
+    }
+    @include max-screen($sp) {
+      position: relative;
+      padding: 28px 0 0 0;
+      height: auto;
+    }
+    &:before {
+      @include max-screen($sp) {
+        content: "";
+        width: 1px;
+        height: 100%;
+        left: 0;
+        top: 0;
+        position: absolute;
+        border-left: 1px solid #000;
+      }
+    }
+    &:after {
+      @include max-screen($sp) {
+        height: auto;
+        box-sizing: border-box;
+        background-repeat: no-repeat;
+        background-size: cover;
+        left: 75px;
+        top: 28px;
+        position: absolute;
+        content: "";
+        width: calc(100% - 75px);
+        height: get_vw(101px, 375px);
+        z-index: 1;
+        min-height: 100px;
+      }
+    }
+    > .ttl {
+      color: #000;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      @include max-screen($sp) {
+        height: auto;
+      }
+      &:before {
+        @include max-screen($sp) {
+          content: "";
+          width: 30px;
+          height: 1px;
+          border-bottom: 1px solid #000;
+          position: absolute;
+          left: 0;
+          top: 30px;
+        }
+      }
+    }
+    a {
+      display: block;
+      width: 100%;
+      height: 119px;
+      position: relative;
+      box-sizing: border-box;
+      @include min-screen($sp) {
+        height: get_vw(119px, 1366px);
+      }
+      @include max-screen($sp) {
+        height: auto;
+        padding-top: 19px;
+        z-index: 2;
+        padding-bottom: 18px;
+      }
+      .en {
+        font-size: 190px;
+        line-height: 146px;
+        font-family: "Teko", Helvetica, Arial, "ヒラギノ角ゴ ProN W3",
+          "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+        font-weight: 400;
+        transition: opacity 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        @include min-screen($sp) {
+          line-height: get_vw(146px, 1366px);
+          @include fz_vw(190, 1366);
+        }
+        @include max-screen($sp) {
+          font-size: 4rem;
+          line-height: 3.4rem;
+          letter-spacing: 0px;
+          width: 100%;
+          display: block;
+        }
+      }
+      .ja {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        line-height: 2rem;
+        opacity: 0;
+        transition: opacity 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        left: 0;
+        top: 0;
+        @include max-screen($sp) {
+          font-size: 1.3rem;
+          line-height: 1.9rem;
+          background-color: #000;
+          padding: 2px 13px 3px 13px;
+          opacity: 1;
+          position: static;
+          color: #fff;
+          display: inline-block;
+          width: auto;
+          margin-top: 6px;
+        }
+      }
+      &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        @include max-screen($sp) {
+          display: none;
+        }
+      }
+      &:after {
+        @include max-screen($sp) {
+          content: "";
+          background-size: 26px auto;
+          background-repeat: no-repeat;
+          position: absolute;
+          right: 14px;
+          top: 40px;
+          z-index: 3;
+          width: 26px;
+          height: 26px;
+          transition: none;
+          opacity: 1;
+          left: auto;
+        }
+      }
+      &:hover {
+        opacity: 1;
+        text-decoration: none;
+        &:before {
+          opacity: 1;
+        }
+        .en {
+          opacity: 0.1;
+          @include max-screen($sp) {
+            opacity: 1;
+          }
+        }
+        .ja {
+          opacity: 1;
+        }
+      }
+    }
+    &.-type1 {
+      &:after {
+      }
+      a {
+        padding-left: get_vw(257px, 1366px);
+        @include max-screen($sp) {
+          padding-left: 40px;
+        }
+        &:before {
+          background: rgb(255, 255, 2);
+          background: linear-gradient(
+            90deg,
+            rgba(255, 255, 2, 1) 0%,
+            rgba(222, 242, 118, 1) 50%,
+            rgba(186, 229, 252, 1) 100%
+          );
+        }
+      }
+    }
+    &.-type2 {
+      transform: translateY(-1px);
+      &:after {
+      }
+      a {
+        padding-left: get_vw(98px, 1366px);
+        @include max-screen($sp) {
+          padding-left: 40px;
+        }
+        &:before {
+          background: rgb(146, 253, 67);
+          background: linear-gradient(
+            90deg,
+            rgba(146, 253, 67, 1) 0%,
+            rgba(185, 228, 255, 1) 100%
+          );
+        }
+      }
+    }
+    &.-type3 {
+      transform: translateY(-2px);
+      &:after {
+      }
+      a {
+        padding-left: get_vw(420px, 1366px);
+        @include max-screen($sp) {
+          padding-left: 40px;
+        }
+        &:before {
+          background: rgb(0, 255, 157);
+          background: linear-gradient(
+            90deg,
+            rgba(0, 255, 157, 1) 0%,
+            rgba(185, 228, 255, 1) 100%
+          );
+        }
+      }
+    }
+    &.-type4 {
+      transform: translateY(-3px);
+      &:after {
+      }
+      a {
+        padding-left: get_vw(27px, 1366px);
+        @include max-screen($sp) {
+          padding-left: 40px;
+        }
+        &:before {
+          background: rgb(0, 245, 255);
+          background: linear-gradient(
+            90deg,
+            rgba(0, 245, 255, 1) 0%,
+            rgba(185, 228, 255, 1) 100%
+          );
+        }
+      }
+    }
+    &.-type5 {
+      transform: translateY(-4px);
+      &:after {
+      }
+      a {
+        padding-left: get_vw(102px, 1366px);
+        @include max-screen($sp) {
+          padding-left: 40px;
+        }
+        &:before {
+          background: rgb(69, 140, 255);
+          background: linear-gradient(
+            90deg,
+            rgba(69, 140, 255, 1) 0%,
+            rgba(185, 228, 255, 1) 100%
+          );
+        }
+      }
+    }
+    &.-type6 {
+      transform: translateY(-5px);
+      &:after {
+      }
+      a {
+        padding-left: get_vw(332px, 1366px);
+        @include max-screen($sp) {
+          padding-left: 40px;
+        }
+        &:before {
+          background: rgb(247, 95, 177);
+          background: linear-gradient(
+            90deg,
+            rgba(247, 95, 177, 1) 0%,
+            rgba(242, 185, 255, 1) 100%
+          );
+        }
+      }
+    }
+    &.-type7 {
+      transform: translateY(-6px);
+      &:after {
+      }
+      a {
+        padding-left: get_vw(148px, 1366px);
+        @include max-screen($sp) {
+          padding-left: 40px;
+        }
+        &:before {
+          background: rgb(255, 123, 83);
+          background: linear-gradient(
+            90deg,
+            rgba(255, 123, 83, 1) 0%,
+            rgba(242, 255, 185, 1) 100%
+          );
+        }
+      }
+    }
+    &.-type8 {
+      transform: translateY(-7px);
+      &:after {
+      }
+      a {
+        padding-left: get_vw(514px, 1366px);
+        @include max-screen($sp) {
+          padding-left: 40px;
+        }
+        &:before {
+          background: rgb(249, 255, 103);
+          background: linear-gradient(
+            90deg,
+            rgba(249, 255, 103, 1) 0%,
+            rgba(224, 191, 138, 1) 100%
+          );
+        }
+      }
+    }
+    &.-last {
+      &:before {
+        height: 59px;
+      }
+    }
+  }
+}
+
+/*---------------
+* clients
+----------------*/
+.clients-section {
+  width: 100%;
+  background-color: #e8ecf2;
+  padding: 143px 0 120px 0;
+  @include max-screen($content-m) {
+    padding: 100px 40px 90px 40px;
+    box-sizing: border-box;
+  }
+  @include max-screen($sp) {
+    padding: 64px 20px 54px 20px;
+  }
+  &.active {
+    .ico {
+      transform: rotate(45deg);
+    }
+  }
+  > .container {
+    width: 1000px;
+    margin: 0 auto;
+    padding-left: 48px;
+    position: relative;
+    box-sizing: border-box;
+    @include max-screen($content-m) {
+      width: 100%;
+    }
+    @include max-screen($sp) {
+      padding-left: 0;
+    }
+  }
+  .section-ttl {
+    position: absolute;
+    left: 0;
+    top: -24px;
+    @include max-screen($sp) {
+      font-size: 3rem;
+      line-height: 4.6rem;
+    }
+  }
+  .ico {
+    display: none;
+    @include max-screen($sp) {
+      width: 24px;
+      height: 24px;
+      display: block;
+      top: -17px;
+      right: 4px;
+      position: absolute;
+      cursor: pointer;
+      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    &:before {
+      content: "";
+      width: 24px;
+      height: 1px;
+      border-top: 1px solid #000;
+      position: absolute;
+      left: 0;
+      top: 12px;
+    }
+    &:after {
+      content: "";
+      width: 1px;
+      height: 24px;
+      border-right: 1px solid #000;
+      position: absolute;
+      left: 10px;
+      top: 0;
+    }
+  }
+  .block {
+    background-color: #fff;
+    width: 100%;
+    padding: 41px 50px 50px 47px;
+    box-sizing: border-box;
+    @include max-screen($sp) {
+      padding: 41px 19px 44px 19px;
+      margin-bottom: 25px;
+      display: none;
+    }
+  }
+  .lists {
+    font-size: 1.6rem;
+    line-height: 4.5rem;
+    letter-spacing: 1.2px;
+    margin-bottom: 13px;
+    @include max-screen($content-m) {
+      font-size: 1.4rem;
+      line-height: 3.6rem;
+    }
+    > li {
+      display: inline-block;
+      padding-right: 14px;
+      margin-right: 5px;
+      position: relative;
+      @include max-screen($sp) {
+        word-break: break-all;
+        padding-right: 0;
+        margin-right: 0;
+        display: inline;
+      }
+      &:after {
+        content: "/";
+        position: absolute;
+        right: 0;
+        @include max-screen($sp) {
+          content: " / ";
+          position: static;
+        }
+      }
+    }
+  }
+  .sup {
+    font-size: 1.3rem;
+    line-height: 3rem;
+  }
+}
+
+/*---------------
+* news
+----------------*/
+.news-section {
+  background-color: #000;
+  width: 100%;
+  padding: 119px 0 45px 0;
+  @include max-screen($content-m) {
+    padding: 80px 0 45px 0;
+  }
+  @include max-screen($sp) {
+    padding: 61px 0 45px 0;
+  }
+  > .container {
+    width: 1000px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    @include max-screen($content-m) {
+      width: 100%;
+      padding: 0 0 0 40px;
+    }
+    @include max-screen($sp) {
+      padding: 0 0 0 20px;
+    }
+  }
+  .section-ttl {
+    color: #fff;
+    margin-bottom: 25px;
+    @include max-screen($sp) {
+      font-size: 3rem;
+      line-height: 4.6rem;
+    }
+  }
+  .js-news-slider {
+    width: 100%;
+    overflow: hidden;
+    @include max-screen($content-m) {
+      width: 1020px;
+    }
+    @include max-screen($sp) {
+      width: 1000px;
+    }
+  }
+  .swiper-container {
+    @include max-screen($content-m) {
+      width: 1000px;
+    }
+  }
+  .lists {
+    display: flex;
+    box-sizing: border-box;
+    justify-content: flex-start;
+    margin-bottom: 17px;
+    width: 1020px;
+    @include max-screen($content-m) {
+      padding-right: 0;
+      width: 100%;
+    }
+  }
+  .article {
+    width: 235px;
+    color: #fff;
+    position: relative;
+    transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    margin-right: 20px;
+    @include max-screen($content-m) {
+      min-width: 235px;
+      margin-right: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+    &:hover {
+      opacity: 0.8;
+    }
+    > .img {
+      width: 100%;
+      margin-bottom: 21px;
+      @include max-screen($sp) {
+        margin-bottom: 18px;
+      }
+      img {
+        width: 100%;
+        display: block;
+        height: auto;
+      }
+    }
+    .link {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      @include texthidden();
+    }
+    .info {
+      display: flex;
+      flex-wrap: wrap;
+      > .date {
+        font-size: 1.4rem;
+        line-height: 2rem;
+        font-family: "Source Sans Pro", Helvetica, Arial, "ヒラギノ角ゴ ProN W3",
+          "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+        font-weight: 400;
+        margin-right: 21px;
+        letter-spacing: 0px;
+      }
+      > .category {
+        font-size: 1.4rem;
+        line-height: 2rem;
+        font-family: "Source Sans Pro", Helvetica, Arial, "ヒラギノ角ゴ ProN W3",
+          "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+        font-weight: 400;
+        position: relative;
+        z-index: 3;
+        text-transform: uppercase;
+        line-height: 2rem;
+        opacity: 0.7;
+        li {
+          display: inline-block;
+          margin-right: 3px;
+        }
+        a {
+          color: #fff;
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
+      > .txt {
+        font-size: 1.3rem;
+        line-height: 2.2rem;
+        margin-top: 20px;
+        @include max-screen($sp) {
+          margin-top: 11px;
+        }
+      }
+    }
+  }
+  .btn-wrap {
+    justify-content: flex-end;
+    width: 1020px;
+    padding-right: 10px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    @include max-screen($content-m) {
+      width: 100%;
+      padding: 0 30px 0 40px;
+      transform: translateX(0px);
+    }
+    @include max-screen($sp) {
+      padding: 0 15px 0 20px;
+    }
+  }
+}
+
+/*---------------
+* om
+----------------*/
+.om-section {
+  background-color: #000;
+  width: 100%;
+  padding: 44px 0 134px 0;
+  @include max-screen($content-m) {
+    padding: 44px 40px 134px 40px;
+    box-sizing: border-box;
+  }
+  @include max-screen($sp) {
+    padding: 39px 20px 78px 20px;
+  }
+  > .container {
+    width: 1000px;
+    margin: 0 auto;
+    @include max-screen($content-m) {
+      width: 100%;
+    }
+  }
+  .section-ttl {
+    margin-bottom: 40px;
+    color: #fff;
+    @include max-screen($sp) {
+      font-size: 3rem;
+      line-height: 4.6rem;
+      margin-bottom: 15px;
+    }
+  }
+  .lists {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+    @include max-screen($sp) {
+      display: block;
+    }
+    li {
+      width: calc(50% - 10px);
+      margin-bottom: 20px;
+      @include max-screen(920px) {
+        width: 100%;
+      }
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+        @include max-screen(920px) {
+          display: none;
+        }
+      }
+      a {
+        display: block;
+        width: 100%;
+        position: relative;
+        @include max-screen(920px) {
+          background-size: cover;
+        }
+        span {
+          position: absolute;
+          left: 0;
+          top: 0;
+          transform: translateY(80px);
+          width: 100%;
+          height: 100%;
+          box-sizing: border-box;
+          padding: 40px 160px 0 57px;
+          color: #fff;
+          font-size: 1.3rem;
+          line-height: 2.2rem;
+          opacity: 0;
+          transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+          @include min-screen(920px) {
+            background-image: none !important;
+            color: #fff !important;
+          }
+          @include max-screen($content-m) {
+            padding-top: 0;
+            display: flex;
+            align-items: center;
+          }
+          @include max-screen(920px) {
+            display: block;
+            transition: none;
+            opacity: 1;
+            transform: translateY(0);
+            position: static;
+            min-height: 122px;
+            padding: 131px 17px 17px 17px;
+            background-repeat: no-repeat;
+            background-position: center top;
+            background-size: 337px auto;
+            background-color: transparent !important;
+          }
+          &:before {
+            width: 50px;
+            height: 1px;
+            background-color: #fff;
+            position: absolute;
+            content: "";
+            right: 37px;
+            top: 50%;
+            transform: translateY(-2px);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            @include max-screen(920px) {
+              display: none;
+            }
+          }
+          &:after {
+            width: 10px;
+            height: 10px;
+            border-right: 1px solid #fff;
+            border-top: 1px solid #fff;
+            content: "";
+            position: absolute;
+            right: 39px;
+            top: 50%;
+            transform: rotate(45deg) translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            @include max-screen(920px) {
+              display: none;
+            }
+          }
+        }
+        &:hover {
+          opacity: 1;
+          text-decoration: none;
+          span {
+            transform: translateY(0px);
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*---------------
+* 背景色変更用クラス
+----------------*/
+.bg-black {
+  background-color: #000;
+  .mv-section {
+    .ol {
+      .line {
+        span {
+          -webkit-text-fill-color: #fff;
+        }
+      }
+    }
+  }
+  .work-section {
+    .section-ttl {
+      color: #fff;
+    }
+  }
+}
+
+/*---------------
+* safariだけ
+----------------*/
+_::-webkit-full-page-media,
+_:future,
+:root .mv-section .line span {
+  @include min-screen($sp) {
+    height: get_vw(163px, 1366px);
+  }
+  @include max-screen($sp) {
+    height: get_vw(75px, 375px);
+  }
+}
+
+_::-webkit-full-page-media,
+_:future,
+:root .mv-section .line {
+  @include min-screen($sp) {
+    height: get_vw(156px, 1366px);
+  }
+  @include max-screen($sp) {
+    height: get_vw(75px, 375px);
+  }
+}
+
+_::-webkit-full-page-media,
+_:future,
+:root .mv-section.anim .line:nth-child(3) span {
+  @include min-screen($sp) {
+    transform: translateY(get_vw(-2px, 1366px));
+  }
+}
